@@ -1,16 +1,16 @@
 import passport, { PassportStatic, use } from "passport";
 import { Strategy, VerifyFunctionWithRequest } from "passport-google-oauth2";
+import GoogleStrategy from 'passport-google-oauth2';
 import { configAuth } from "../config/config";
-
 export class GoogleoAuth2Service {
     callback(request: any, accessToken: any, refreshToken: any, profile: any, done: any): VerifyFunctionWithRequest {
         return done(null, profile);
     };
 
     createPassport(): PassportStatic {
-        const passport = use(new Strategy(configAuth, this.callback));
+        const passportConfig = passport.use(new Strategy(configAuth, this.callback));
 
-        return passport;
+        return passportConfig;
     };
 
     serializeUser() {
