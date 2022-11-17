@@ -1,4 +1,4 @@
-import { Request, Response, Router } from "express";
+import { Router } from "express";
 import AuthFailureController from "./controllers/AuthFailureController";
 import LogoutController from "./controllers/LogoutController";
 import MainController from "./controllers/MainController";
