@@ -1,4 +1,5 @@
 import { Request, Response, Router } from "express";
+import AuthFailureController from "./controllers/AuthFailureController";
 import MainController from "./controllers/MainController";
 import ProtectedController from "./controllers/ProtectedController";
 import { GoogleoAuth2Service } from "./services/GoogleoAuth2Service";
@@ -8,6 +9,11 @@ const passport = new GoogleoAuth2Service().createPassport();
 
 router.get('/', MainController.index);
 router.get('/auth/google', passport.authenticate('google', { scope: ['email', 'profile'] }))
+router.get('/google/callback', passport.authenticate('google', {
+    successRedirect: '/protected',
+    failureRedirect: '/auth/failure',
+});
+router.get('/auth/failure', AuthFailureController.index)
 router.get('/protected', ProtectedController.index);
 
 export { router };
