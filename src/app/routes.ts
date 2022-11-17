@@ -4,10 +4,10 @@ import LogoutController from "./controllers/LogoutController";
 import MainController from "./controllers/MainController";
 import ProtectedController from "./controllers/ProtectedController";
 import { isLoggedIn } from "./middleware/isLoggedIn";
-import { GoogleoAuth2Service } from "./services/GoogleoAuth2Service";
+import { GoogleOAuth2Service } from "./services/GoogleoAuth2Service";
 
 const router = Router();
-const passport = new GoogleoAuth2Service().createPassport();
+const passport = new GoogleOAuth2Service().createPassport();
 
 router.get('/', MainController.index);
 router.get('/auth/google', passport.authenticate('google', { scope: ['email', 'profile'] }))

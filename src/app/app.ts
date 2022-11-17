@@ -2,11 +2,11 @@ import { config } from 'dotenv';
 import express from 'express';
 import session from 'express-session';
 import { router } from './routes';
-import { GoogleoAuth2Service } from './services/GoogleoAuth2Service';
+import { GoogleOAuth2Service } from './services/GoogleoAuth2Service';
 
 const app = express();
-const googleService = new GoogleoAuth2Service();
-const passport = new GoogleoAuth2Service().createPassport();
+const googleService = new GoogleOAuth2Service();
+const passport = new GoogleOAuth2Service().createPassport();
 
 config();
 
