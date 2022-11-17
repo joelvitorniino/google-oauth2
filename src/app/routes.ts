@@ -12,7 +12,7 @@ router.get('/auth/google', passport.authenticate('google', { scope: ['email', 'p
 router.get('/google/callback', passport.authenticate('google', {
     successRedirect: '/protected',
     failureRedirect: '/auth/failure',
-});
+}));
 router.get('/auth/failure', AuthFailureController.index)
 router.get('/protected', ProtectedController.index);
 
