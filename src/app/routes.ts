@@ -2,6 +2,7 @@ import { Request, Response, Router } from "express";
 import AuthFailureController from "./controllers/AuthFailureController";
 import MainController from "./controllers/MainController";
 import ProtectedController from "./controllers/ProtectedController";
+import { isLoggedIn } from "./middleware/isLoggedIn";
 import { GoogleoAuth2Service } from "./services/GoogleoAuth2Service";
 
 const router = Router();
@@ -14,6 +15,6 @@ router.get('/google/callback', passport.authenticate('google', {
     failureRedirect: '/auth/failure',
 }));
 router.get('/auth/failure', AuthFailureController.index)
-router.get('/protected', ProtectedController.index);
+router.get('/protected', isLoggedIn, ProtectedController.index);
 
 export { router };

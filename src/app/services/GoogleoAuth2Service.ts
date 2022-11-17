@@ -1,6 +1,5 @@
-import passport, { PassportStatic, use } from "passport";
+import passport, { PassportStatic} from "passport";
 import { Strategy, VerifyFunctionWithRequest } from "passport-google-oauth2";
-import GoogleStrategy from 'passport-google-oauth2';
 import { configAuth } from "../config/config";
 export class GoogleoAuth2Service {
     callback(request: any, accessToken: any, refreshToken: any, profile: any, done: any): VerifyFunctionWithRequest {
